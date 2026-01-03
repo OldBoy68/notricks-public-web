@@ -2,6 +2,11 @@
 
 Sito pubblico statico per `notricks.app` / `www.notricks.app` (home + privacy + delete-account + support).
 
+## Decisioni (ADR)
+
+La decisione architetturale che descrive domini, pagine minime e policy Play Store è nel repo backend:
+`docs/07_decisions_adr/ADR-0008_public-web-presence_play-store.md`
+
 ## Source of truth
 
 Il **repo Git è la sorgente ufficiale**.  
@@ -21,3 +26,20 @@ Dalla root del repo:
 chmod +x deploy.sh
 ./deploy.sh /percorso/alla/key.pem
 ```
+
+Lo script usa `rsync --delete` (rimuove sul server file che non esistono più nel repo).
+
+## Verifica rapida
+
+```bash
+curl -I https://notricks.app/
+curl -I https://notricks.app/assets/site.v1.css
+curl -I https://www.notricks.app/   # deve redirigere verso notricks.app
+```
+
+## Note
+
+-   `www.notricks.app` redirige verso `https://notricks.app/...` (canonical).
+-   Cache:
+    -   HTML: `Cache-Control: no-cache`
+    -   `/assets/*`: `Cache-Control: public, max-age=31536000, immutable`
