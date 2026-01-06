@@ -18,6 +18,17 @@ Evitare modifiche manuali direttamente sulla EC2: aggiornare i file qui e fare d
 -   Host EC2: `51.118.75.4`
 -   Path di deploy sulla EC2: `/opt/notricks/notricks-public-web`
 
+## Test in locale
+
+```bash
+npx serve .
+```
+
+## Nota cache (CloudFront)
+
+Abbiamo visto che con CloudFront i cambiamenti a CSS/JS possono non apparire subito.  
+Per evitare problemi: versiona gli asset (es. `site.v2.css`) e aggiorna i link negli HTML; poi invalida solo gli HTML su CloudFront. Così non serve invalidare tutti gli asset ad ogni deploy.
+
 ## Deploy
 
 Dalla root del repo:
@@ -33,7 +44,7 @@ Lo script usa `rsync --delete` (rimuove sul server file che non esistono più ne
 
 ```bash
 curl -I https://notricks.app/
-curl -I https://notricks.app/assets/site.v1.css
+curl -I https://notricks.app/assets/site.v2.css
 curl -I https://www.notricks.app/   # deve redirigere verso notricks.app
 ```
 

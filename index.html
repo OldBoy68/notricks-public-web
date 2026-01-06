@@ -6,13 +6,18 @@
         <title>NoTricks — Informarsi senza farsi usare</title>
         <meta name="description" content="NoTricks è un'app Android per leggere notizie da feed RSS con meno rumore e più controllo." />
         <link rel="canonical" href="https://notricks.app/" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_32.png" />
+        <link rel="icon" type="image/svg+xml" href="/assets/notricks_logo.svg" />
         <meta property="og:title" content="NoTricks. Informarsi senza farsi usare." />
+        <meta property="og:site_name" content="NoTricks" />
         <meta property="og:description" content="Un'app Android per leggere notizie da feed RSS con meno rumore e più controllo." />
         <meta property="og:url" content="https://notricks.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://notricks.app/assets/og-image.svg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="stylesheet" href="/assets/site.v1.css" />
+        <link rel="stylesheet" href="/assets/site.v2.css" />
     </head>
     <body>
         <div class="page">
@@ -33,7 +38,7 @@
                                 leggibili, con la fonte al centro.
                             </p>
                             <div class="cta-row">
-                                <a class="button-primary" href="[LINK_PROGRAMMA_TEST]">Scarica NoTricks (programma di test)</a>
+                                <button class="button-primary" type="button" data-modal-open>Scarica NoTricks</button>
                                 <nav class="quick-links" aria-label="Link rapidi">
                                     <a href="/privacy">Privacy</a>
                                     <a href="/delete-account">Cancellazione account</a>
@@ -42,7 +47,7 @@
                             </div>
                         </div>
                         <aside class="hero-card fade-up fade-delay-2">
-              <h2>Funzioni principali</h2>
+                            <h2>Funzioni principali</h2>
                             <ul>
                                 <li>Feed notizie e dettaglio</li>
                                 <li>Apri la fonte originale</li>
@@ -107,7 +112,7 @@
                         <p>NoTricks non è un progetto “data-first”. È l’opposto.</p>
                         <ul>
                             <li>Nessuna pubblicità</li>
-              <li>Nessun analytics di terze parti</li>
+                            <li>Nessun analytics di terze parti</li>
                             <li>Log tecnici minimi per far funzionare e proteggere il servizio (con retention limitata)</li>
                         </ul>
                         <p>Dettagli: <a href="/privacy">/privacy</a></p>
@@ -144,5 +149,74 @@
                 </div>
             </footer>
         </div>
+        <div class="modal-backdrop" data-modal-backdrop hidden>
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+                <div class="modal-card">
+                    <h2 id="modal-title">Ci siamo quasi</h2>
+                    <p id="modal-body" aria-live="polite">
+                        Il programma di test non è ancora pronto, ma manca pochissimo.
+                        Se vuoi, scrivici a <a href="mailto:support@notricks.app?subject=Richiesta%20accesso%20test%20NoTricks">support@notricks.app</a> e ti aggiorniamo appena parte.
+                    </p>
+                    <div class="modal-actions">
+                        <button class="button-secondary" type="button" data-modal-close>Chiudi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function () {
+                var openBtn = document.querySelector("[data-modal-open]");
+                var closeBtn = document.querySelector("[data-modal-close]");
+                var backdrop = document.querySelector("[data-modal-backdrop]");
+                var modal = backdrop ? backdrop.querySelector(".modal") : null;
+                if (!openBtn || !closeBtn || !backdrop || !modal) return;
+                var lastFocused = null;
+
+                function getFocusable(container) {
+                    return Array.prototype.slice.call(
+                        container.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')
+                    );
+                }
+
+                function openModal() {
+                    backdrop.hidden = false;
+                    document.body.classList.add("modal-open");
+                    lastFocused = document.activeElement;
+                    closeBtn.focus();
+                }
+
+                function closeModal() {
+                    backdrop.hidden = true;
+                    document.body.classList.remove("modal-open");
+                    if (lastFocused && typeof lastFocused.focus === "function") {
+                        lastFocused.focus();
+                    } else {
+                        openBtn.focus();
+                    }
+                }
+
+                openBtn.addEventListener("click", openModal);
+                closeBtn.addEventListener("click", closeModal);
+                backdrop.addEventListener("click", function (event) {
+                    if (event.target === backdrop) closeModal();
+                });
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Tab" && !backdrop.hidden) {
+                        var focusable = getFocusable(modal);
+                        if (focusable.length === 0) return;
+                        var first = focusable[0];
+                        var last = focusable[focusable.length - 1];
+                        if (event.shiftKey && document.activeElement === first) {
+                            event.preventDefault();
+                            last.focus();
+                        } else if (!event.shiftKey && document.activeElement === last) {
+                            event.preventDefault();
+                            first.focus();
+                        }
+                    }
+                    if (event.key === "Escape" && !backdrop.hidden) closeModal();
+                });
+            })();
+        </script>
     </body>
 </html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512"
+     width="512" height="512"
+     role="img" aria-label="NoTricks N quotidiano classico">
+  <path fill="#24303A" fill-rule="evenodd" d="
+    M120 88 H200 V424 H120 Z
+    M312 88 H392 V424 H312 Z
+    M200 88 H258 L312 424 H254 Z
+  "/>
+  <g fill="#C9972B">
+    <rect x="408" y="160" width="74" height="16" rx="8"/>
+    <rect x="408" y="206" width="92" height="16" rx="8"/>
+    <rect x="408" y="252" width="82" height="16" rx="8"/>
+  </g>
+</svg>

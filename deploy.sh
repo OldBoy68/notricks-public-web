@@ -38,5 +38,3 @@ echo "Done."
 echo
 echo "Quick checks:"
 echo "  curl -I https://notricks.app/"
-echo "  curl -I https://notricks.app/assets/site.v1.css"
-
