@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
     <head>
         <meta charset="utf-8" />
@@ -71,12 +71,16 @@
                 <section class="section">
                     <div class="container">
                         <h2>Il principio</h2>
-                        <p>Le notizie sono importanti. L’attenzione lo è di più.</p>
+                        <p>Le notizie sono importanti. L'attenzione lo è di più.</p>
+                        <p>
+                            <strong>Molti feed ti studiano:</strong> tracciano cosa apri, fanno training sul tuo comportamento, ti profilano e poi ti chiudono in un loop di raccomandazioni sempre più
+                            uguale. NoTricks non fa nulla di tutto questo: mostra notizie da fonti curate, senza profilazione.
+                        </p>
                         <p>NoTricks prova a ridurre ciò che non serve e lasciare spazio a ciò che conta:</p>
                         <ul>
                             <li>meno rumore</li>
                             <li>più chiarezza</li>
-                            <li>più scelta dell’utente</li>
+                            <li>più controllo dell’utente</li>
                             <li>fonte sempre accessibile</li>
                         </ul>
                     </div>
@@ -86,12 +90,12 @@
                     <div class="container">
                         <h2>Cosa fa (concretamente)</h2>
                         <ul>
-                            <li>Raccoglie notizie da più feed RSS.</li>
+                            <li>Raccoglie notizie da una selezione curata di feed RSS.</li>
                             <li>Le normalizza e le presenta in un feed più pulito.</li>
                             <li>Ti permette di aprire sempre l'articolo originale.</li>
                             <li>Ti aiuta a filtrare il "clickbait" e a tornare al contenuto.</li>
                         </ul>
-                        <p>Non promette di “dirti cosa pensare”.</p>
+                        <p>Non promette di "dirti cosa pensare".</p>
                         <p>Promette di rendere più semplice leggere.</p>
                     </div>
                 </section>
@@ -100,8 +104,8 @@
                     <div class="container">
                         <h2>Due modalità</h2>
                         <ul>
-                            <li>Guest: apri e leggi, senza creare un account.</li>
-                            <li>Accesso con Google (non ancora disponibile): verrà introdotto più avanti per funzioni legate al profilo.</li>
+                            <li>Oggi l’app è senza account (modalità guest).</li>
+                            <li>Google Sign-In arriverà in futuro per funzioni legate all’account (filtri, sincronizzazione, backup, preferenze).</li>
                         </ul>
                     </div>
                 </section>
@@ -115,7 +119,7 @@
                             <li>Nessun analytics di terze parti</li>
                             <li>Log tecnici minimi per far funzionare e proteggere il servizio (con retention limitata)</li>
                         </ul>
-                        <p>Dettagli: <a href="/privacy">/privacy</a></p>
+                        <p>Dettagli: <a href="/privacy">Privacy</a></p>
                     </div>
                 </section>
 
@@ -132,7 +136,7 @@
                 <section class="section">
                     <div class="container">
                         <h2>È in test</h2>
-                        <p> NoTricks è in fase di test: alcune cose saranno grezze, altre cambieranno. Se vuoi segnalare bug o inviare feedback: <a href="/support">/support</a> </p>
+                        <p> NoTricks è in fase di test: alcune cose saranno grezze, altre cambieranno. Se vuoi segnalare bug o inviare feedback: <a href="/support">Supporto</a> </p>
                         <p class="note">NoTricks non è destinata a minori di 18 anni.</p>
                     </div>
                 </section>
@@ -154,8 +158,8 @@
                 <div class="modal-card">
                     <h2 id="modal-title">Ci siamo quasi</h2>
                     <p id="modal-body" aria-live="polite">
-                        Il programma di test non è ancora pronto, ma manca pochissimo.
-                        Se vuoi, scrivici a <a href="mailto:support@notricks.app?subject=Richiesta%20accesso%20test%20NoTricks">support@notricks.app</a> e ti aggiorniamo appena parte.
+                        Il programma di test non è ancora pronto, ma manca pochissimo. Se vuoi, scrivici a
+                        <a href="mailto:support@notricks.app?subject=Richiesta%20accesso%20test%20NoTricks">support@notricks.app</a> e ti aggiorniamo appena parte.
                     </p>
                     <div class="modal-actions">
                         <button class="button-secondary" type="button" data-modal-close>Chiudi</button>
@@ -173,9 +177,7 @@
                 var lastFocused = null;
 
                 function getFocusable(container) {
-                    return Array.prototype.slice.call(
-                        container.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')
-                    );
+                    return Array.prototype.slice.call(container.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]'));
                 }
 
                 function openModal() {
