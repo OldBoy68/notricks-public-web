@@ -38,7 +38,7 @@
                                 leggibili, con la fonte al centro.
                             </p>
                             <div class="cta-row">
-                                <button class="button-primary" type="button" data-modal-open>Scarica NoTricks</button>
+                                <button class="button-primary" type="button" data-modal-open aria-expanded="false" aria-controls="download-modal">Scarica NoTricks</button>
                                 <nav class="quick-links" aria-label="Link rapidi">
                                     <a href="/privacy">Privacy</a>
                                     <a href="/delete-account">Cancellazione account</a>
@@ -144,7 +144,7 @@
 
             <footer>
                 <div class="container">
-                    <div>Contatto: support@notricks.app</div>
+                    <div>Contatto: <a href="mailto:support@notricks.app">support@notricks.app</a></div>
                     <div class="footer-links">
                         <a href="/privacy">Privacy</a>
                         <a href="/delete-account">Cancellazione account</a>
@@ -154,7 +154,7 @@
             </footer>
         </div>
         <div class="modal-backdrop" data-modal-backdrop hidden>
-            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+            <div class="modal" id="download-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
                 <div class="modal-card">
                     <h2 id="modal-title">Ci siamo quasi</h2>
                     <p id="modal-body" aria-live="polite">
@@ -173,6 +173,7 @@
                 var closeBtn = document.querySelector("[data-modal-close]");
                 var backdrop = document.querySelector("[data-modal-backdrop]");
                 var modal = backdrop ? backdrop.querySelector(".modal") : null;
+                var page = document.querySelector(".page");
                 if (!openBtn || !closeBtn || !backdrop || !modal) return;
                 var lastFocused = null;
 
@@ -184,12 +185,22 @@
                     backdrop.hidden = false;
                     document.body.classList.add("modal-open");
                     lastFocused = document.activeElement;
+                    openBtn.setAttribute("aria-expanded", "true");
+                    if (page) {
+                        page.setAttribute("aria-hidden", "true");
+                        if ("inert" in page) page.inert = true;
+                    }
                     closeBtn.focus();
                 }
 
                 function closeModal() {
                     backdrop.hidden = true;
                     document.body.classList.remove("modal-open");
+                    openBtn.setAttribute("aria-expanded", "false");
+                    if (page) {
+                        page.removeAttribute("aria-hidden");
+                        if ("inert" in page) page.inert = false;
+                    }
                     if (lastFocused && typeof lastFocused.focus === "function") {
                         lastFocused.focus();
                     } else {

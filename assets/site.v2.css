@@ -53,6 +53,7 @@
   --fg: #121111;
   --muted: #5f5a53;
   --accent: #f04a2d;
+  --accent-strong: #c03b24;
   --accent-ink: #0b0b0b;
   --line: #d8d1c6;
   --card: #ffffff;
@@ -67,6 +68,7 @@
     --fg: #f5f1ea;
     --muted: #b7b0a6;
     --accent: #ff6a49;
+    --accent-strong: #ff6a49;
     --accent-ink: #111111;
     --line: #2a2d31;
     --card: #17191c;
@@ -132,13 +134,18 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
-  text-decoration-color: currentColor;
+  text-decoration-color: var(--accent-strong);
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-strong);
   outline-offset: 3px;
 }
 
