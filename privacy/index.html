@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="it">
     <head>
@@ -19,6 +20,7 @@
         <link rel="icon" type="image/svg+xml" href="/assets/notricks_logo.svg" />
         <link rel="stylesheet" href="/assets/site.v2.css" />
     </head>
+
     <body>
         <div class="page">
             <header>
@@ -36,7 +38,7 @@
                 <section class="hero">
                     <div class="container">
                         <h1>Privacy Policy</h1>
-                        <p class="subtitle">Ultimo aggiornamento: 16 gennaio 2026</p>
+                        <p class="subtitle">Ultimo aggiornamento: 18 gennaio 2026</p>
                     </div>
                 </section>
 
@@ -44,7 +46,10 @@
                     <div class="container card">
                         <h2 class="small-title">Titolare del trattamento</h2>
                         <p>Marco Papotti (persona fisica).</p>
-                        <p>Contatto: <a href="mailto:support@notricks.app">support@notricks.app</a></p>
+                        <p>
+                            Contatto:
+                            <a href="mailto:support@notricks.app">support@notricks.app</a>
+                        </p>
                     </div>
                 </section>
 
@@ -59,20 +64,36 @@
                     <div class="container">
                         <h2>Dati trattati</h2>
                         <p><strong>Oggi (app senza account)</strong></p>
-                        <p><strong>1) Dati tecnici e di sicurezza</strong></p>
+
+                        <h3 class="small-title">1) Dati tecnici e di sicurezza</h3>
                         <p> Informazioni tecniche e log necessari al funzionamento e alla sicurezza (es. indirizzo IP, timestamp, endpoint chiamati, user-agent). </p>
-                        <p>Un identificativo tecnico del dispositivo usato dall'app per richieste API (device id).</p>
-                        <p><strong>2) Dati locali sul dispositivo</strong></p>
-                        <p> Funzioni come "Salvati" possono essere memorizzate solo localmente sul dispositivo (non sul server). </p>
-                        <p><strong>3) Dati relativi ai Tip (mance)</strong></p>
+
+                        <p><strong>Identificativo dell’installazione (UUID)</strong></p>
+                        <p>
+                            Alla prima apertura l’app genera un identificativo casuale (UUID) e lo salva localmente sul dispositivo. L’UUID viene inviato al server come header tecnico (X-Device-Id)
+                            per:
+                        </p>
+                        <ul>
+                            <li>gestire sessioni “guest”;</li>
+                            <li>prevenire abusi (rate limiting);</li>
+                            <li>supportare verifiche tecniche (es. mance).</li>
+                        </ul>
+                        <p>Non accediamo né utilizziamo identificatori hardware o di sistema (es. IMEI, seriale, Android ID).</p>
+                        <p>L’UUID può cambiare reinstallando l’app o cancellandone i dati.</p>
+
+                        <h3 class="small-title">2) Dati locali sul dispositivo</h3>
+                        <p> Funzioni come “Salvati” possono essere memorizzate solo localmente sul dispositivo (non sul server). </p>
+
+                        <h3 class="small-title">3) Dati relativi ai Tip (mance)</h3>
                         <p>I pagamenti sono gestiti da Google Play.</p>
                         <p>
-                            Per verificare e registrare correttamente un tip/mancia possiamo trattare identificativi tecnici della transazione (es. product id e purchase token) e metadati tecnici di
-                            verifica.
+                            Per verificare un tip possiamo trattare identificativi tecnici della transazione (es. product id e purchase token) e metadati di verifica.
+                            <strong>Non riceviamo né conserviamo i dati di pagamento (es. carta).</strong>
                         </p>
+
                         <p><strong>Se/quando abiliteremo Google Sign-In</strong></p>
-                        <p><strong>4) Dati di autenticazione</strong></p>
-                        <p> Identificativo dell'account (es. "subject" Google) e, se disponibile, email e stato "email verificata". </p>
+                        <h3 class="small-title">4) Dati di autenticazione</h3>
+                        <p> Identificativo dell’account (es. “subject” Google) e, se disponibile, email e stato “email verificata”. </p>
                     </div>
                 </section>
 
@@ -82,8 +103,9 @@
                         <ul>
                             <li>Erogare il servizio (caricamento e visualizzazione notizie).</li>
                             <li>Sicurezza, prevenzione abusi, debug e affidabilità del servizio.</li>
-                            <li>Gestione/verifica tecnica delle mance ("Tip jar").</li>
+                            <li>Gestione/verifica tecnica delle mance (“Tip jar”).</li>
                         </ul>
+
                         <p><strong>Se/quando abiliteremo Google Sign-In</strong></p>
                         <ul>
                             <li>Autenticazione e funzioni legate all’account (filtri, sincronizzazione, backup, preferenze).</li>
@@ -131,10 +153,10 @@
 
                 <section class="section">
                     <div class="container">
-                        <h2>Diritti dell'utente</h2>
+                        <h2>Diritti dell’utente</h2>
                         <p>
-                            Puoi richiedere accesso, cancellazione e chiarimenti scrivendo a <a href="mailto:support@notricks.app">support@notricks.app</a>. Per la cancellazione dei dati associati:
-                            vedi <a href="/delete-account">delete-account</a>.
+                            Puoi chiedere quali dati trattiamo su di te, ottenerne una copia o richiederne la cancellazione scrivendo a
+                            <a href="mailto:support@notricks.app">support@notricks.app</a>. Per la procedura di eliminazione: vedi <a href="/delete-account">delete-account</a>.
                         </p>
                     </div>
                 </section>
@@ -156,7 +178,7 @@
 
             <footer>
                 <div class="container">
-                    <div>Contatto: <a href="mailto:support@notricks.app">support@notricks.app</a></div>
+                    <div> Contatto: <a href="mailto:support@notricks.app">support@notricks.app</a> </div>
                     <div class="footer-links">
                         <a href="/">Home</a>
                         <a href="/delete-account">Cancellazione account</a>
@@ -167,3 +189,4 @@
         </div>
     </body>
 </html>
+```
