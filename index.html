@@ -38,7 +38,14 @@
                                 leggibili, con la fonte al centro.
                             </p>
                             <div class="cta-row">
-                                <button class="button-primary" type="button" data-modal-open aria-expanded="false" aria-controls="download-modal">Scarica NoTricks</button>
+                                <a
+                                    class="button-primary"
+                                    href="https://play.google.com/store/apps/details?id=app.notricks.mobile&hl=it&gl=IT"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Scarica NoTricks su Google Play"
+                                    >Scarica NoTricks</a
+                                >
                                 <nav class="quick-links" aria-label="Link rapidi">
                                     <a href="/privacy">Privacy</a>
                                     <a href="/delete-account">Cancellazione account</a>
@@ -152,7 +159,7 @@
                 </div>
             </footer>
         </div>
-        <div class="modal-backdrop" data-modal-backdrop hidden>
+        <!-- <div class="modal-backdrop" data-modal-backdrop hidden>
             <div class="modal" id="download-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
                 <div class="modal-card">
                     <h2 id="modal-title">Ci siamo quasi</h2>
@@ -165,7 +172,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <script>
             (function () {
                 var openBtn = document.querySelector("[data-modal-open]");
